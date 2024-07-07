@@ -30,17 +30,16 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContent {
             FaceRecognitionTheme {
                 when (PackageManager.PERMISSION_GRANTED) {
                     ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) -> {
                         HomeScreen()
                     }
-
                     else -> {
                         cameraPermissionRequest.launch(android.Manifest.permission.CAMERA)
                     }
-
                 }
             }
         }

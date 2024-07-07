@@ -110,7 +110,9 @@ fun CameraPreview(
                     contentDescription = "capture photo",
                     modifier = Modifier
                         .size(40.dp)
-                        .clickable { }
+                        .clickable {
+                            captureImage(imageCapture.value!!, context)
+                        }
                 )
 
                 Image(
@@ -140,6 +142,7 @@ private suspend fun Context.getCameraProvider(): ProcessCameraProvider =
 
 private fun captureImage(imageCapture: ImageCapture, context: Context) {
     val name = "CameraxImage.jpeg"
+
     val contentValues = ContentValues().apply {
         put(MediaStore.MediaColumns.DISPLAY_NAME, name)
         put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
@@ -147,6 +150,7 @@ private fun captureImage(imageCapture: ImageCapture, context: Context) {
             put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
         }
     }
+
     val outputOptions = ImageCapture.OutputFileOptions
         .Builder(
             context.contentResolver,
@@ -154,12 +158,13 @@ private fun captureImage(imageCapture: ImageCapture, context: Context) {
             contentValues
         )
         .build()
+
     imageCapture.takePicture(
         outputOptions,
         ContextCompat.getMainExecutor(context),
         object : ImageCapture.OnImageSavedCallback {
             override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                println("Successs")
+                println("image captured successfully and stored at ${outputFileResults.savedUri?.path}")
             }
 
             override fun onError(exception: ImageCaptureException) {
