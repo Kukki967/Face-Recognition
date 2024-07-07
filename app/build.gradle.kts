@@ -48,6 +48,12 @@ android {
 
 dependencies {
 
+
+    implementation(libs.camerax)
+    implementation(libs.camerax.lifecycle)
+    implementation(libs.camerax.view)
+    implementation(libs.camerax.core)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
