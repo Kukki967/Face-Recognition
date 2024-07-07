@@ -18,14 +18,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.groot.facerecognition.R
 import com.groot.facerecognition.navigation.Route
 import com.groot.facerecognition.ui.composable.NavBarItem
-import com.groot.facerecognition.ui.theme.Purple80
+import com.groot.facerecognition.ui.screen.addFaces.AddFacesView
 
 @Composable
 fun HomeScreen() {

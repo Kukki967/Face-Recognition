@@ -6,6 +6,4 @@ import androidx.annotation.Keep
 data class ProcessedImage(
     var id: Int? = null,
     var name: String = ""
-) {
-
-}
+)

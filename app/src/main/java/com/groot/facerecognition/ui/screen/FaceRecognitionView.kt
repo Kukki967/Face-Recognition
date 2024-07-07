@@ -19,6 +19,6 @@ fun FaceRecognitionView(modifier: Modifier) {
     val imageCapture: MutableState<ImageCapture?> = remember { mutableStateOf(null) }
     val executor = remember(context) { ContextCompat.getMainExecutor(context) }
 
-    CameraPreview(modifier, imageCapture, executor, false)
+    CameraPreview(modifier, imageCapture, executor, false) {}
 
 }

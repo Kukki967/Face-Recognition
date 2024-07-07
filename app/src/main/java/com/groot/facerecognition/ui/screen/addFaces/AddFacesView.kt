@@ -1,4 +1,4 @@
-package com.groot.facerecognition.ui.screen
+package com.groot.facerecognition.ui.screen.addFaces
 
 import androidx.camera.core.ImageCapture
 import androidx.compose.runtime.Composable
@@ -19,6 +19,8 @@ fun AddFacesView(modifier:Modifier) {
     val imageCapture: MutableState<ImageCapture?> = remember { mutableStateOf(null) }
     val executor = remember(context) { ContextCompat.getMainExecutor(context) }
 
-    CameraPreview(modifier, imageCapture, executor, true)
+    CameraPreview(modifier, imageCapture, executor, true) {
+
+    }
 
 }

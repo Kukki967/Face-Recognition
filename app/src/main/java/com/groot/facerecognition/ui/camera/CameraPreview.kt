@@ -44,7 +44,8 @@ fun CameraPreview(
     modifier: Modifier,
     imageCapture: MutableState<ImageCapture?>,
     executor: Executor,
-    showBottomButton: Boolean
+    showBottomButton: Boolean,
+    captureImageFunction: () -> Unit
 ) {
     val lifecycleOwner = LocalLifecycleOwner.current
     val context = LocalContext.current
@@ -111,7 +112,9 @@ fun CameraPreview(
                     modifier = Modifier
                         .size(40.dp)
                         .clickable {
-                            captureImage(imageCapture.value!!, context)
+                            captureImage(imageCapture.value!!, context) {
+                                captureImageFunction()
+                            }
                         }
                 )
 
@@ -140,7 +143,7 @@ private suspend fun Context.getCameraProvider(): ProcessCameraProvider =
     }
 
 
-private fun captureImage(imageCapture: ImageCapture, context: Context) {
+private fun captureImage(imageCapture: ImageCapture, context: Context, function: () -> Unit) {
     val name = "CameraxImage.jpeg"
 
     val contentValues = ContentValues().apply {
