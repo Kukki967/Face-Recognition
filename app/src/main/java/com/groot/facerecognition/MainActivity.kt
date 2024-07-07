@@ -11,7 +11,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import com.groot.facerecognition.ui.screen.HomeScreen
 import com.groot.facerecognition.ui.theme.FaceRecognitionTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
 
